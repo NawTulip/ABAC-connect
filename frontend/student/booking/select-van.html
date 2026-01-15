@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Trip</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #F5F5F5;
+            margin: 0;
+        }
+        .search-trip-container {
+            background-color: #FFFFFF;
+            border: 1px solid #CCC;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .search-trip-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3C9D31;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #3C9D31;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .seats-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .seats-container button {
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            cursor: pointer;
+            color: #3C9D31;
+        }
+        .seats-container input {
+            width: 60%;
+            text-align: center;
+            border: none;
+            font-size: 16px;
+            color: #3C9D31;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3C9D31;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #E6C200;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-trip-container">
+        <h2>Search Trip</h2>
+        <form onsubmit="addSeatToURL(event)">
+            <div class="form-group">
+                <label for="from">From</label>
+                <select id="from" name="from" required>
+                    <option value="" disabled selected>Select your departure</option>
+                    <option value="Abacus">Abacus</option>
+                    <option value="Dorm">Dorm</option>
+                    <option value="Origin">Origin</option>
+                    <option value="I Space">I Space</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="to">To</label>
+                <select id="to" name="to" required>
+                    <option value="" disabled selected>Select your Destination</option>
+                    <option value="Hua Mak">Hua Mak</option>
+                    <option value="Mega Bangna">Mega Bangna</option>
+                    <option value="Siam">Siam</option>
+                    <option value="Icon Siam">Icon Siam</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group seats-container">
+                <button type="button" onclick="adjustSeats(-1)">-</button>
+                <input type="number" id="seats" name="seats" value="1" min="1" readonly>
+                <button type="button" onclick="adjustSeats(1)">+</button>
+            </div>
+            <button type="submit" class="submit-btn">Search Now</button>
+        </form>
+    </div>
+
+    <script>
+        function adjustSeats(amount) {
+            const seatsInput = document.getElementById('seats');
+            let currentSeats = parseInt(seatsInput.value);
+            currentSeats = Math.max(1, currentSeats + amount);
+            seatsInput.value = currentSeats;
+        }
+
+        function addSeatToURL(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Get form values
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+            const date = document.getElementById('date').value;
+            const seats = document.getElementById('seats').value;
+
+            // Redirect with query parameters
+            window.location.href = `trip-details.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${encodeURIComponent(date)}&seats=${encodeURIComponent(seats)}`;
+        }
+    </script>
+</body>
+</html>

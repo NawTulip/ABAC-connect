@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Information</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-name {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button {
+            display: block;
+            background-color: #3C9D31;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #338227;
+            transform: scale(1.05);
+        }
+
+        .logout {
+            background-color: #d9534f;
+        }
+
+        .logout:hover {
+            background-color: #c9302c;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            background-color: white;
+            margin-left: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Driver Grid */
+        .driver-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .driver-card {
+            width: 150px;
+            height: 150px; /* Making it square */
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .driver-placeholder {
+            width: 100%;
+            height: 70%;
+            border-radius: 4px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .driver-placeholder img {
+            width: 40px;
+            height: 40px;
+            opacity: 0.5;
+        }
+
+        .driver-name {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .edit-icon {
+            width: 12px;
+            margin-right: 5px;
+            opacity: 0.6;
+        }
+
+        .red-dot {
+            width: 8px;
+            height: 8px;
+            background-color: red;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+
+        /* Add Button */
+        .add-button-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .add-label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .add-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #3C9D31;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .add-button:hover {
+            background-color: #338227;
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="profile">
+            <img src="profile-placeholder.png" alt="Profile">
+            <div class="profile-name">Profile Name</div>
+        </div>
+        
+        <div class="nav-buttons">
+            <a href="/admin/Home/Main.html" class="button">Home</a>
+            <a href="Driver_info.html" class="button">Driver</a>
+            <a href="../Announcement.html" class="button">Send Announcement and Notification</a>
+            <a href="../Feedback.html" class="button">Feedbacks</a>
+        
+
+        </div>
+
+        <a href="login.html" class="button logout">Log out</a>
+    </div>
+
+    <div class="add-button-container">
+        <span class="add-label">Add New Driver</span>
+        <a href="../New_Driver.html" class="add-button">Add</a>
+    </div>
+    
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Driver Grid -->
+        <div class="driver-grid">
+            <div class="driver-card">
+                <div class="driver-placeholder">
+                    <img src="photo-placeholder.png" alt="Driver Photo">
+                </div>
+                <div class="driver-name">
+                    <img src="edit-icon.png" class="edit-icon"> Driver: no123 <span class="red-dot"></span>
+                </div>
+            </div>
+            <div class="driver-card">
+                <div class="driver-placeholder">
+                    <img src="photo-placeholder.png" alt="Driver Photo">
+                </div>
+                <div class="driver-name">
+                    <img src="edit-icon.png" class="edit-icon"> Driver: no1 <span class="red-dot"></span>
+                </div>
+            </div>
+            <div class="driver-card">
+                <div class="driver-placeholder">
+                    <img src="photo-placeholder.png" alt="Driver Photo">
+                </div>
+                <div class="driver-name">
+                    <img src="edit-icon.png" class="edit-icon"> Driver: no2 <span class="red-dot"></span>
+                </div>
+            </div>
+            <div class="driver-card">
+                <div class="driver-placeholder">
+                    <img src="photo-placeholder.png" alt="Driver Photo">
+                </div>
+                <div class="driver-name">
+                    <img src="edit-icon.png" class="edit-icon"> Driver: no3 <span class="red-dot"></span>
+                </div>
+            </div>
+            <div class="driver-card">
+                <div class="driver-placeholder">
+                    <img src="photo-placeholder.png" alt="Driver Photo">
+                </div>
+                <div class="driver-name">
+                    <img src="edit-icon.png" class="edit-icon"> Driver: no4 <span class="red-dot"></span>
+                </div>
+            </div>
+            <div class="driver-card">
+                <div class="driver-placeholder">
+                    <img src="photo-placeholder.png" alt="Driver Photo">
+                </div>
+                <div class="driver-name">
+                    <img src="edit-icon.png" class="edit-icon"> Driver: no5 <span class="red-dot"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Add Button -->
+        <div class="add-button-container">
+            <span class="add-label">Add New Driver</span>
+            <a href="New_Driver.html" class="add-button">Add</a>
+        </div>
+    </div>
+
+</body>
+</html>

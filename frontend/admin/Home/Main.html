@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Admin Dashboard</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #ccc;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .profile-name {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button {
+            display: block;
+            background-color: #3C9D31;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #338227;
+            transform: scale(1.05);
+        }
+
+        .logout {
+            background-color: #d9534f;
+        }
+
+        .logout:hover {
+            background-color: #c9302c;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            background-color: white;
+            margin-left: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        /* Status Buttons */
+        .status-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .status-button {
+            width: 180px;
+            height: 60px;
+            background-color: white;
+            border: 2px solid #3C9D31;
+            color: #3C9D31;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .status-button:hover {
+            background-color: #3C9D31;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="profile">
+            <img src="profile-placeholder.png" alt="Profile">
+            <div class="profile-name">Profile Name</div>
+        </div>
+        
+        <div class="nav-buttons">
+            <a href="Main.html" class="button">Home</a>
+            <a href="/admin/Driver/Driver_info.html" class="button">Driver</a>
+            <a href="../Announcement.html" class="button">Send Announcement and Notification</a>
+            <a href="../Feedback.html" class="button">Feedbacks</a>
+        </div>
+
+        <a href="login.html" class="button logout">Log out</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Status Buttons -->
+        <div class="status-buttons">
+            <div class="status-button" onclick="location.href='Pending.html'">Pending</div>
+            <div class="status-button" onclick="location.href='Complete.html'">Complete</div>
+            <div class="status-button" onclick="location.href='Receipt.html'">Transferred Payment</div>
+            <div class="status-button" onclick="location.href='Reviews.html'">Reviews</div>
+        </div>
+    </div>
+
+   
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Driver</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-name {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button {
+            display: block;
+            background-color: #3C9D31;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #338227;
+            transform: scale(1.05);
+        }
+
+        .logout {
+            background-color: #d9534f;
+        }
+
+        .logout:hover {
+            background-color: #c9302c;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            background-color: white;
+            margin-left: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Title */
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #ccc;
+            width: 300px;
+            background-color: #f9f9f9;
+        }
+
+        /* Profile Picture Placeholder */
+        .profile-placeholder {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-placeholder img {
+            width: 60px;
+            height: 60px;
+            opacity: 0.5;
+        }
+
+        /* Form Layout */
+        .form-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .labels {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .labels div {
+            padding: 10px;
+            border: 2px solid #ccc;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #f9f9f9;
+            width: 150px;
+            text-align: center;
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .inputs input {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        /* Save Button */
+        .save-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #3C9D31;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .save-button:hover {
+            background-color: #338227;
+            transform: scale(1.05);
+        }
+        .file-input {
+    display: none;
+}
+
+.upload-btn {
+    background-color: #3C9D31;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.upload-btn:hover {
+    background-color: #338227;
+    transform: scale(1.05);
+}
+
+.profile-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="profile">
+            <img src="profile-placeholder.png" alt="Profile">
+            <div class="profile-name">Profile Name</div>
+        </div>
+        
+        <div class="nav-buttons">
+            <a href="/admin/Home/Main.html" class="button">Home</a>
+            <a href="Driver_info.html" class="button">Driver</a>
+            <a href="../Announcement.html" class="button">Send Announcement and Notification</a>
+            <a href="../Feedback.html" class="button">Feedbacks</a>
+        </div>
+
+        <a href="login.html" class="button logout">Log out</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <p id="success-message" style="display: none; color: green; font-weight: bold; margin-bottom: 15px;">
+            New Driver added
+        </p>
+        
+        <div class="title">New Driver</div>
+
+        <!-- Profile Picture Placeholder -->
+        <div class="profile-placeholder">
+            <img id="profile-preview" src="photo-placeholder.png" alt="Upload Photo">
+        </div>
+        <input type="file" id="profile-upload" class="file-input" accept="image/*" onchange="previewImage(event)">
+        <label for="profile-upload" class="upload-btn">Upload Photo</label>
+        
+
+        <!-- Form Layout -->
+        <div class="form-container">
+            <div class="labels">
+                <div>Name</div>
+                <div>Driver License</div>
+                <div>Phone Number</div>
+                <div>Address</div>
+            </div>
+            <div class="inputs">
+                <input type="text" placeholder="Type Here ...">
+                <input type="text" placeholder="Type Here ...">
+                <input type="text" placeholder="Type Here ...">
+                <input type="text" placeholder="Type Here ...">
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <button class="save-button" onclick="showSuccessMessage()">Save</button>
+        <script>
+            function showSuccessMessage() {
+                document.getElementById("success-message").style.display = "block";
+                setTimeout(() => {
+                    document.getElementById("success-message").style.display = "none";
+                }, 3000); // Message disappears after 3 seconds
+            }
+        </script>
+        
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const img = document.getElementById("profile-preview");
+                    img.src = reader.result;
+                    img.style.display = "block";
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+</body>
+</html>

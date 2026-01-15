@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .details-table th, .details-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        /* Star Rating */
+        .feedback-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .stars {
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .stars .star {
+            transition: color 0.3s;
+        }
+
+        .stars .star:hover,
+        .stars .star.selected {
+            color: #FFD700;
+        }
+
+        .feedback-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            color: white;
+            background-color: #338227;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .feedback-btn:hover {
+            background-color: #2A6D23;
+        }
+
+        .rate-text {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .id-section {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Booking Confirmation</h2>
+
+        <!-- Booking Details -->
+        <div class="section-title">Booking Details</div>
+        <table class="details-table">
+            <tr>
+                <th>Route</th>
+                <td id="route">The Rich - Icon Siam</td>
+                <th>Departure Time</th>
+                <td id="departureTime">Nov 30, 9:00 AM</td>
+                <th>Pickup Location</th>
+                <td id="pickupLocation">The Rich</td>
+            </tr>
+            <tr>
+                <th>Van Number</th>
+                <td id="vanNumber">No. 2186</td>
+                <th>Booking Date</th>
+                <td id="bookingDate">Nov 29, 10:00 PM</td>
+                <th>Total</th>
+                <td id="total">200 Baht</td>
+            </tr>
+        </table>
+
+        <!-- Traveler Information -->
+        <div class="section-title">Traveller Information</div>
+        <table class="details-table">
+            <tr>
+                <th>Passenger Name</th>
+                <td id="passengerName">Naw Tulip</td>
+                <th>Phone Number</th>
+                <td id="phoneNumber">06-xxxxxxxx</td>
+                <th>Special Request</th>
+                <td id="specialRequest">Null</td>
+            </tr>
+        </table>
+
+        <!-- Feedback Section -->
+        <div class="feedback-section">
+            <div class="stars">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            <div class="rate-text">Rate</div>
+            <button class="feedback-btn" onclick="submitFeedback()">Give Feedback</button>
+        </div>
+
+        <!-- ID Section -->
+        <div class="id-section">ID - xxxxxxxx</div>
+    </div>
+
+    <script>
+        // Get booking details from URL parameters
+        const params = new URLSearchParams(window.location.search);
+
+        document.getElementById('route').textContent = params.get('route') || "The Rich - Icon Siam";
+        document.getElementById('departureTime').textContent = params.get('departureTime') || "Nov 30, 9:00 AM";
+        document.getElementById('pickupLocation').textContent = params.get('pickupLocation') || "The Rich";
+        document.getElementById('vanNumber').textContent = params.get('vanNumber') || "No. 2186";
+        document.getElementById('bookingDate').textContent = params.get('bookingDate') || "Nov 29, 10:00 PM";
+        document.getElementById('total').textContent = params.get('total') || "200 Baht";
+
+        document.getElementById('passengerName').textContent = params.get('passengerName') || "Naw Tulip";
+        document.getElementById('phoneNumber').textContent = params.get('phoneNumber') || "06-xxxxxxxx";
+        document.getElementById('specialRequest').textContent = params.get('specialRequest') || "Null";
+
+        // Star Rating Functionality
+        const stars = document.querySelectorAll(".star");
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener("click", function() {
+                selectedRating = this.getAttribute("data-value");
+
+                // Reset and highlight selected stars
+                stars.forEach(s => s.classList.remove("selected"));
+                for (let i = 0; i < selectedRating; i++) {
+                    stars[i].classList.add("selected");
+                }
+            });
+        });
+
+        function submitFeedback() {
+    if (selectedRating === 0) {
+        alert("Please select a rating before submitting feedback.");
+        return;
+    }
+    alert(`Thank you for your feedback! You rated ${selectedRating} stars.`);
+
+    // Redirect to the successful booking page
+    window.location.href = "successful_booking.html";
+}
+
+    </script>
+
+</body>
+</html>

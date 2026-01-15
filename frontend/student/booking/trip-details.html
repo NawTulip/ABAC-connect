@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Search Result</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2A6A20;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            text-align: center;
+            cursor: not-allowed;
+        }
+
+        .trip-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .trip-info h3 {
+            margin: 0;
+            font-size: 22px;
+            color: #2A6A20;
+        }
+
+        .trip-price h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #338227;
+        }
+
+        .select-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #338227;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .select-btn:hover {
+            background-color: #2A6A20;
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Available Trips</h2>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="from" readonly>
+            <input type="text" id="to" readonly>
+            <input type="text" id="date" readonly>
+            <input type="text" id="seats" readonly>
+        </div>
+
+        <!-- Trip Card -->
+        <div class="trip-card">
+            <div class="trip-info">
+                <h3>08:00 AM</h3>
+                <p>The Rich - Icon Siam</p>
+                <p>StandBy - 7:55 AM</p>
+            </div>
+            <div class="trip-price">
+                <h4>200 Baht</h4>
+                <p><span id="seat-display">1</span> seat(s) x 200 Baht</p>
+                <a href="#" class="select-btn" onclick="redirectToPassengerInfo('08:00 AM', 200)">Select Trip</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get the query parameters from the URL
+        const params = new URLSearchParams(window.location.search);
+        const from = params.get('from') || 'Not Selected';
+        const to = params.get('to') || 'Not Selected';
+        const date = params.get('date') || 'Not Selected';
+        const seats = params.get('seats') || '1'; // Default to 1 seat
+    
+        // Populate the input fields with the values
+        document.getElementById('from').value = from;
+        document.getElementById('to').value = to;
+        document.getElementById('date').value = date;
+        document.getElementById('seats').value = `${seats} Seat${seats > 1 ? 's' : ''}`;
+    
+        function redirectToPassengerInfo(departureTime, price) {
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from') || 'Not Selected';
+    const to = params.get('to') || 'Not Selected';
+    const date = params.get('date') || 'Not Selected';
+    const seats = params.get('seats') || '1'; // Default to 1 seat
+
+    window.location.href = `passenger_info.html?route=${encodeURIComponent(from + " - " + to)}&departureTime=${encodeURIComponent(departureTime)}&seats=${encodeURIComponent(seats)}&price=${encodeURIComponent(price * seats)}`;
+}
+    </script>
+    
+</body>
+</html>
